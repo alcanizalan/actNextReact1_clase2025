@@ -1,10 +1,8 @@
 import React from "react";
-import {ShoppingCart, UserIcon } from "lucide-react"
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { APP_NAME} from "@/lib/constants"
-import ModeToggle from "./mode-toggle";
+import MenuHeader from "./menu";
 
 export default function Header(){
     return (
@@ -17,13 +15,7 @@ export default function Header(){
                     <span className="hidden lg:block font-bold text-2xl ml-3">{APP_NAME}</span>
                 </div>
                 <div className="space-x-2">
-                    <ModeToggle />
-                    <Button asChild variant={"ghost"}>
-                        <Link href="/cart"><ShoppingCart />Cart</Link>
-                    </Button>
-                    <Button asChild variant={"ghost"}>
-                        <Link href="/cart"><UserIcon />Sign-In</Link>
-                    </Button>
+                    <MenuHeader />
                 </div>
             </div>
         </header>
