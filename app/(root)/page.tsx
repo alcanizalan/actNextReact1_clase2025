@@ -1,11 +1,12 @@
 import React from "react";
-import {Button} from "@/components/ui/button";
+import ProductList from "@/components/shared/header/product/product-list"
+import sampleData from '@/app/db/sample-data'
 
 export default function Home() {
   return (
     <div>
-      <p>Home Page</p>
-      <Button variant={'outline'}>Hola</Button>
+      <p></p>
+      <ProductList data={sampleData.products} title="Mi Lista" limit={4}/>
     </div>
   );
 }
