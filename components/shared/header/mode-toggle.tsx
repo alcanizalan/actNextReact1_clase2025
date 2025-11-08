@@ -8,10 +8,9 @@ export default function ModeToggle(){
     const {theme, setTheme} = useTheme();
     const [mounted, setMounted] = useState(false);
     
-    const themes = ["system", "light", "dark", "doom", "blue-minimal"];
+    const themes = ["system", "light", "dark", "doom"];
     const [position, setPosition] = useState(0)
 
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     useEffect(() => setMounted(true), []);
 
     const handleClick = () => {
@@ -29,7 +28,6 @@ export default function ModeToggle(){
             theme === "light" ? (<SunIcon/>) : 
             theme === "doom" ? (<span>💀</span>) : 
             theme === "dark" ? (<MoonIcon/>) : 
-            theme === "blue-minimal" ? (<span>2</span>) : 
             (<MoonIcon/>)}
         </Button>
     )
