@@ -1,21 +1,15 @@
 services:
   db:
     image: postgres
+    container_name: pepito
     restart: always
-    # set shared memory limit when using docker-compose
     shm_size: 128mb
-    # or set shared memory limit when deploy via swarm stack
-    #volumes:
-    #  - type: tmpfs
-    #    target: /dev/shm
-    #    tmpfs:
-    #      size: 134217728 # 128*2^20 bytes = 128Mb
     environment:
       POSTGRES_PASSWORD: a
-      POSTGRES_USER: ico
+      POSTGRES_USER: alan
       POSTGRES_DB: prostore
     healthcheck:
-       test: ["CMD-SHELL", "pg_isready -U prisma -d postgres"]
+       test: ["CMD-SHELL", "pg_isready -U alan -d prostore"]
        interval: 5s
        timeout: 2s
        retries: 20
@@ -25,7 +19,7 @@ services:
         max-size: "10m"
         max-file: "3"
     volumes: 
-      - psgdb_data:/var/lib/postgresql/data
+      - psgdb_data:/var/lib/postgresql/18/docker
     ports:
       - 5432:5432
     networks:
@@ -34,8 +28,10 @@ services:
   adminer:
     image: adminer
     restart: always
+    # Avoid colliding with other stacks that may bind host 8080.
+    # Map host 9900 -> container 8080 so adminer remains reachable.
     ports:
-      - 8080:8080
+      - 9900:8080
     networks:
       - prisma-network
 
