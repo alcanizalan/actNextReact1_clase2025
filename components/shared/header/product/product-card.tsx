@@ -6,6 +6,7 @@ import {Card, CardContent, CardHeader} from "@/components/ui/card"
 import ProductPrice from "./product-price"
 
 export default function PorductCard({product}:{product:Product}){
+    console.log(product.price);
     return(
         <Card className="w-full max-w-sm">
             <CardHeader className="p-0 items-center">
@@ -20,7 +21,10 @@ export default function PorductCard({product}:{product:Product}){
                 </Link>
                 <div className="flex-between gap-4">
                     <p>{product.rating} Stars</p>
-                    {product.stock > 0 ? <ProductPrice value={product.price}/> : <p className="text-destructive">Out of stock</p>}
+                    {product.stock > 0 ? (
+                        <ProductPrice value={product.price}/>
+                        //<p>CORREGIR</p>
+                     ) : <p className="text-destructive">Out of stock</p>}
 
                 </div>
             </CardContent>

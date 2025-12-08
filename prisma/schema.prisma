@@ -11,7 +11,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model Product {
@@ -29,4 +28,4 @@ model Product {
   isFeatured Boolean @default(false)
   banner String?
   createdAt DateTime @default(now()) @db.Timestamp(6)
-}
+} 
